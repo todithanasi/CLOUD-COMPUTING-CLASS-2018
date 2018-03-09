@@ -27,5 +27,5 @@ filtered = [w for w in tokens if not w in sw]
 count = Counter(filtered)
 
 print("The english stopwords in the text are:", sw)
-print("The most 10 frequent words are:", count.most_common(10))
+print("The 10 most frequent words are:", count.most_common(10))
 print("Total number of words is:", sum(count.values()))
