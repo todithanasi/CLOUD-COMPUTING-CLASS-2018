@@ -20,7 +20,7 @@ For the tasks we convert tokens to lowercase because before that we were getting
 we also removed some extra single characters like ..., a and q
 Following is the output:
 
-´´´
+```
 List of the top ten most frequent tokens
 
 big : 592
@@ -59,9 +59,7 @@ donuts : 196
 vp : 196
 sherrill : 196
 kaplan : 196
-
-
-´´´
+```
 
 #### Task 3.3: Case study
 
@@ -69,12 +67,10 @@ For this task we also converted letters to lowercase only because otherwise in t
 Converting the letters to lowercase merged these two bars.
 We would also like to point out that to save the proper image we have to first save image as a file and then show it, otherwise it saves a blank image.
 
-´´´
-
+```
 plt.savefig('CaseStudy.png')  # Save it in a file
 plt.show()                  # show it on IDE
-
-´´´
+```
 
 The output graph of the analysis is: 
 
