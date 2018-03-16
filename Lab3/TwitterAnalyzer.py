@@ -5,9 +5,11 @@ import nltk
 import string
 
 from collections import Counter
-from nltk.corpus import stopwords
+
 
 nltk.download("stopwords")  # download the stopword corpus on our computer
+
+from nltk.corpus import stopwords
 
 emoticons_str = r"""
     (?:
