@@ -28,9 +28,11 @@ access_secret = os.getenv("ACCESS_SECRET_API")
 auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_secret)
 
-fname = 'Data.json'
 
 searchString = input("Enter the word you want to analyse on twitter to have insights: ")
+
+fname = searchString + '.json'
+
 
 def writeToFile (filename, data):
     with open(filename, 'a') as f:
@@ -39,18 +41,15 @@ def writeToFile (filename, data):
 
 api = tweepy.API(auth)
 
-
-for tweet in tweepy.Cursor(api.search, q=searchString, lang="en").items(10):
-    writeToFile(fname, tweet)
+# Fetch Tweets
+for tweet in tweepy.Cursor(api.search, q=searchString, lang="en").items(1500):
+   writeToFile(fname, tweet)
 
 sid = SIA()
 
 sentiments = {"hour": [],  "positive": [], "neutral": [],  "negative": [], "total_tweets": []}
 sentiment_list = {"positive": 0, "negative": 0, "neutral": 0}
 
-
-punctuation = list(string.punctuation)
-stop = stopwords.words('english') + punctuation + ['rt', 'via', 'a', '…', 'q']
 with open(fname, 'r') as f:
     for line in f:
         tweet = json.loads(line)
@@ -83,16 +82,13 @@ dfSentiments['hour'] = pd.to_datetime(dfSentiments['hour'])
 dfSentiments.index = dfSentiments['hour']
 del dfSentiments['hour']
 print(dfSentiments.resample('30Min').sum())
-positiveTweets = dfSentiments.resample('30Min').agg({'positive': np.sum})
-negativeTweets = dfSentiments.resample('30Min').agg({'negative': np.sum})
-neutralTweets = dfSentiments.resample('30Min').agg({'neutral': np.sum})
 plt.subplot(121)
 labelsLine = ['total_tweets', 'neutral', 'positive', 'negative']
-plt.plot(dfSentiments.resample('30Min').sum(), label=labelsLine)
-plt.legend()
-plt.title('Insights on with time')
-# plt.show(dfSentiments.resample('H').sum().plot())
-
+plt.plot(dfSentiments.resample('30Min').sum())
+plt.legend(labelsLine)
+plt.title('Insights on ' + searchString + ' with time')
+plt.xlabel('Time (30 minutes)')
+plt.ylabel('number of tweets')
 
 # Pie chart, where the slices will be ordered and plotted counter-clockwise:
 
@@ -104,6 +100,7 @@ patches, texts = plt.pie(sizes, colors=colors, startangle=90)
 plt.legend(patches, labels, loc="best")
 plt.axis('equal')
 plt.tight_layout()
-plt.savefig('PieGraph.png')  # Save it in a file
+plt.title('Sentimental Reaction of people on ' + searchString)
+plt.savefig('Insights.png')  # Save it in a file
 plt.show()                  # show it on IDE
 

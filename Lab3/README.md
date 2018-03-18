@@ -76,4 +76,20 @@ The output graph of the analysis is:
 
 ![Barcelona](https://github.com/todithanasi/CLOUD-COMPUTING-CLASS-2018/raw/master/Lab3/CaseStudy.png)
 
+#### Task 3.4: Student Proposal
+We implemented a search engine where user can input a word and we fetch 1500 tweets from twitter related to that topic.
+We do a sentimental analysis using nltk sentiment analyser and show the trend of each emotion (positve, negative and neutral) and how is it evolving with time by a line graph.
+We also draw a pie chart showing overall positive, negative and neutral responses related to that topic.
+The topic we chose were big data and iphone x:
+The idea is to see how the impression of people about big data analytics is evolving with time. We would assume that initially everyone was very excited about big data.
+But after a while when they started to realize all the privacy threats, people started changing their opinions. Due to the limit of free API we can only access 7 days of data. 
+Ideally this should be plotted over years, but due to the limitations we plotted for every 30 minutes for only 1500 tweets.
+
+![Barcelona](https://github.com/todithanasi/CLOUD-COMPUTING-CLASS-2018/raw/master/Lab3/BigDataInsights.png)
+
+The other topic we chose was iphone x to see how the reactive of people regarding a certain product evolves with time.
+This can be helpful for companies to see how and why the reactive of people regarding their certain prodcut is changing with time. 
+
+![Barcelona](https://github.com/todithanasi/CLOUD-COMPUTING-CLASS-2018/raw/master/Lab3/IphonexInsights.png)
+
 
