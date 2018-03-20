@@ -15,11 +15,11 @@ https://github.com/todithanasi/eb-django-express-signup
 
 Following is the Screenshot of DyanmoDB table with the data of the new leads.
 
-![DyanmoDB](\DyanmoDBTable.png)
+![DyanmoDB](.\DyanmoDBTable.png)
 
 Following is the screenshot of the deployed website on the cloud.
 
-![CloudDeployment](\DeploymentOnCloud.png)
+![CloudDeployment](.\DeploymentOnCloud.png)
 
 #### Terminating EC2 Instance:
 
