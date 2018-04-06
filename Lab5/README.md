@@ -13,6 +13,19 @@ https://github.com/todithanasi/CLOUD-COMPUTING-CLASS-2018/tree/master/Lab5
 #### Task 5.1
 Q51: Has everything gone alright?
 
+![aws](/screenshots/Task5.1_1.PNG)
+![aws](/screenshots/Task5.2_1.PNG)
+![aws](/screenshots/Task5.2_2.PNG)
+![aws](/screenshots/Task5.3_1.PNG)
+![aws](/screenshots/Task5.4_1.PNG)
+![aws](/screenshots/Task5.4_2.PNG)
+![aws](/screenshots/Task5.4_3.PNG)
+![aws](/screenshots/Task5.4_5.PNG)
+![aws](/screenshots/Task5.4_6.PNG)
+
+
+
+
 #### Task 5.2
 Q52: Has everything gone alright? What have you changed?
 #### Task 5.3
