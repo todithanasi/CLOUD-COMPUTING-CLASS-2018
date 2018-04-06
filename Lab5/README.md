@@ -9,3 +9,18 @@
                          
 #### Github url
 https://github.com/todithanasi/CLOUD-COMPUTING-CLASS-2018/tree/master/Lab5
+
+#### Task 5.1
+Q51: Has everything gone alright?
+
+#### Task 5.2
+Q52: Has everything gone alright? What have you changed?
+#### Task 5.3
+Q53: Describe the strategy used to fulfill the requirements of this section. What have you changed in the code and the configuration of the different resources used by the web app? What are the tradeoffs of your solution?
+
+#### Task 5.4
+
+Q54: Take a couple of screenshots of you S3 and CloudFront consoles to demonstrate that everything worked all right.
+
+Q55: How long have you been working on this session (including the optional part)? What have been the main difficulties you have faced and how have you solved them?
+
