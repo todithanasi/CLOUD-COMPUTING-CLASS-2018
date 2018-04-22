@@ -9,6 +9,7 @@ import googleapiclient.discovery
 import matplotlib as mpl
 import boto3
 import uuid
+import time
 from collections import OrderedDict
 mpl.rcParams['figure.figsize'] = (7, 7)
 import matplotlib.pyplot as plt
@@ -29,7 +30,7 @@ def main(userid, table):
 
     flickr = FlickrAPI(FLICKR_PUBLIC, FLICKR_SECRET, format='parsed-json')
     extras = 'url_c'
-    user_data = flickr.photos.search(user_id=userid, per_page='100', extras=extras)
+    user_data = flickr.photos.search(user_id=userid, per_page='50', extras=extras)
     service = googleapiclient.discovery.build('vision', 'v1')
 
     photos = user_data['photos']
@@ -63,12 +64,15 @@ def main(userid, table):
                 )
             except Exception as e:
                 print('\nError adding item to database: ' + (e.fmt if hasattr(e, 'fmt') else '') + ','.join(e.args))
+                time.sleep(5)
             for result in response_vision['responses'][0]['labelAnnotations']:
                 if result['description'] in tag_prob:
                     number = tag_prob.get(result['description'])
                     tag_prob.update({result['description']: result['score'] + number})
                 else:
                     tag_prob.update({result['description']: result['score']})
+                print("%s - %.3f" % (result['description'], result['score']))
+
         # [END parse_response]
 
     sort_tags = OrderedDict((sorted(tag_prob.items(), key=lambda x: -x[1]))[:8])
