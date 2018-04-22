@@ -24,11 +24,11 @@ Answer: No. Nothing was needed to be changed in order to make the application wo
 Q62a: Now we are showing all the collected tweets on the map. Can you think of a way of restricting the tweets plotted using some constraints? For instance, the user could invoke http://127.0.0.1:8000/map?from=2018-02-01-05-20&to=2018-02-03-00-00. Implement that functionality or any other functionality that you think it could be interesting for the users.
 To restrict the tweets on map on a date range , we saved the date as timestamp strings as there is no concept of date range comparison in Dyanamo DB. we took the parameter values of to_date and from_date from url, converted them to timestamp as well and compared them to filter the required date range tweets.
 
-![](screenshots/TaskTask6.2.b.PNG)
+![](screenshots/Task6.2.b.PNG)
 Q62b: Make the necessary changes to have geo_data.json distributed using S3, or the method you used for the above section. Publish your changes to EB and explain what changes have you made to have this new function working.
 To distribute the geo_data.json, we saved it to s3 bucket and accessed it from s3 bucket. We also implemented caching by saving a file like '2018-04-14-10-30-2018-04-14-11-39.json' using query string in url and every time check if this file exist already, if yes just use that file otherwise fetch the data from database and create this file and then load data.
 This reduces the query load to database. 
-![](screenshots/TaskTask6.2.c.PNG)
+![](screenshots/Task6.2.c.PNG)
 
 To allow application to access s3 bucket, we edited IAM role to add permissions to read and write in the s3 bucket. 
 We also changed CORS configuration of the bucket to allow cross origin requests.
@@ -48,4 +48,5 @@ We also changed CORS configuration of the bucket to allow cross origin requests.
 
 Q62c: How would you run TwitterListener.py in the cloud instead of locally? Try to implement your solution and explain what problems have you found and what solutions have you implemented.
 
-To deploy TwitterListener.py on cloud we needed to create a strategy to start and stop it somehow without closing the instance. We created a web page in the application twitter.py with a button to start and stop the TwitterListener to gather tweets.
+For TwitterListener.py, we created a new view in the views.py file which has its own URL (domainName:8000/twitter) in the url.py file with the same concept utilized for the maps and chart features. When this URL is called, a subprocess is initiated that executes the python code which can be found in the TwitterListener.py file, which streams tweets and stores them in DynamoDB. The implementation does not stop the original application from running and allows the user to stop the process upon request. This can be done by implementing a stop button which will be part of the twitter.html page and will allow the user to kill the process gracefully without stopping the wep application.
+We know that decoupling is important, and to make it further modular we can separate the twitter listener from the web application completely as they only use a common database, and there is no further interaction needed. TwitterListener will act as a small microservice inserting tweets in the database independent of everything else. The web application will fetch data from database or s3 bucket files depending on the availability as it is doing now as well. 
