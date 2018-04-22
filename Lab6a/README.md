@@ -29,7 +29,7 @@ Following is the image of one of the bar graphs of user account lfcastro:
 ![](barchart2_lfcastro.png)
 
 For another acount iweatherman:
-![](barchart3_ iweatherman.png)
+![](barchart3_iweatherman.png)
 
 Q64: How long have you been working on this session ( the optional part)? What have been the main difficulties you have faced and how have you solved them?
 
