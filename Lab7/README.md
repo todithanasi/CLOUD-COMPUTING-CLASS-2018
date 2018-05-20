@@ -38,9 +38,11 @@ We build 3 visualization charts and placed them in a Dashboard to answer the bel
 ![Dashboard](screenshots/Dashboard.PNG)
 
 We applied 2 different filters and noticed that the result was changing accordingly.
+The first filter was to show only movies of year 1981.
 
 ![Filter1](screenshots/Filtered.PNG)
 
+The other filter was to show only movies information related to the movie "Mississippi Burning".
 
 ![Filter2](screenshots/Filtered2.PNG)
 
